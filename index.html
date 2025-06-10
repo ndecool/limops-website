@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LimOps - Solutions DevOps & Infrastructure</title>
+    <title>LimOps - Fournisseur de services WiFi &amp; fibre multi-clients</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@300;400;500;600;700&family=Lexend:wght@400&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -231,10 +231,19 @@
             box-shadow: 0 15px 50px rgba(0, 88, 66, 0.15);
         }
 
+        .service-card h3 {
+            font-family: 'Zilla Slab', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--castleton-green);
+        }
+
         .service-card p {
             font-family: 'Lexend', sans-serif;
             font-weight: 400;
         }
+
+        .service-icon {
             width: 60px;
             height: 60px;
             background: linear-gradient(135deg, var(--lime), var(--green-yellow));
@@ -246,52 +255,90 @@
             font-size: 1.5rem;
         }
 
-        .service-card h3 {
-            font-family: 'Zilla Slab', serif;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--castleton-green);
-        }
-
-        /* About Section */
-        .about {
+        /* Gallery Section */
+        .gallery {
             padding: 80px 0;
             background: var(--white);
         }
 
-        .about-content {
+        .gallery-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .about-text {
-            font-family: 'DM Sans', sans-serif;
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
-
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
-            margin-top: 2rem;
         }
 
-        .stat {
-            text-align: center;
-            padding: 1.5rem;
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 88, 66, 0.1);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 80px 0;
             background: var(--anti-flash-white);
-            border-radius: 10px;
         }
 
-        .stat-number {
+        .testimonial-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 88, 66, 0.1);
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+
+        .testimonial-content {
+            font-family: 'Lexend', sans-serif;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark-green);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .author-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
             font-family: 'Zilla Slab', serif;
-            font-size: 2rem;
-            font-weight: 700;
+            font-size: 1.1rem;
+            margin: 0;
             color: var(--castleton-green);
-            display: block;
+        }
+
+        .author-info p {
+            font-family: 'Lexend', sans-serif;
+            font-size: 0.9rem;
+            margin: 0;
+            color: var(--dark-green);
+            opacity: 0.8;
         }
 
         /* Contact Section */
@@ -357,30 +404,6 @@
             transform: translateY(-2px);
         }
 
-        .contact-info h3 {
-            font-family: 'Zilla Slab', serif;
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            color: var(--lime);
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .contact-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--castleton-green);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
         /* Footer */
         footer {
             background: var(--dark-green);
@@ -390,14 +413,13 @@
             border-top: 1px solid var(--castleton-green);
         }
 
-        /* Responsive */
+        /* Responsive Design */
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
             }
 
             .hero-content,
-            .about-content,
             .contact-content {
                 grid-template-columns: 1fr;
                 gap: 2rem;
@@ -415,24 +437,6 @@
                 grid-template-columns: 1fr;
             }
         }
-
-        /* Animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeIn 0.8s ease forwards;
-        }
-
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .service-card:nth-child(1) { animation-delay: 0.1s; }
-        .service-card:nth-child(2) { animation-delay: 0.2s; }
-        .service-card:nth-child(3) { animation-delay: 0.3s; }
     </style>
 </head>
 <body>
@@ -442,7 +446,8 @@
             <ul class="nav-links">
                 <li><a href="#accueil">Accueil</a></li>
                 <li><a href="#services">Services</a></li>
-                <li><a href="#apropos">À propos</a></li>
+                <li><a href="#gallery">En images</a></li>
+                <li><a href="#testimonials">Témoignages</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
@@ -453,18 +458,18 @@
             <div class="container">
                 <div class="hero-content">
                     <div>
-                        <h1>Solutions DevOps & Infrastructure Cloud</h1>
-                        <p>Dans un monde où tout évolue rapidement, il devient essentiel de prendre le temps de réfléchir à ce qui compte réellement. Chaque projet, chaque idée, chaque interaction mérite une attention particulière.</p>
-                        <a href="#contact" class="cta-button">Commencer votre projet</a>
+                        <h1>Fournisseur de services WiFi &amp; fibre multi-clients</h1>
+                        <p>Experts des réseaux à très haut débit, nous proposons des solutions Internet multi-utilisateurs pour les résidences d'étudiants et de séniors, l'habitat collectif, l'hôtellerie et les espaces de coworking.</p>
+                        <a href="#contact" class="cta-button">NOUS CONTACTER</a>
                     </div>
                     <div class="hero-visual">
                         <div class="tech-icons">
-                            <div class="tech-icon">🚀</div>
+                            <div class="tech-icon">🌐</div>
+                            <div class="tech-icon">📡</div>
+                            <div class="tech-icon">💻</div>
+                            <div class="tech-icon">🔒</div>
                             <div class="tech-icon">⚡</div>
                             <div class="tech-icon">🔧</div>
-                            <div class="tech-icon">☁️</div>
-                            <div class="tech-icon">🔒</div>
-                            <div class="tech-icon">📊</div>
                         </div>
                     </div>
                 </div>
@@ -475,54 +480,83 @@
             <div class="container">
                 <h2 class="section-title">Nos Services</h2>
                 <div class="services-grid">
-                    <div class="service-card fade-in">
+                    <div class="service-card">
+                        <div class="service-icon">🌐</div>
+                        <h3>Accès Internet privatif</h3>
+                        <p>Chaque logement, chambre ou bureau bénéficie d'un accès Internet privatif, WiFi et filaire, grâce à la LimBox et/ou aux technologies PPSK et VLAN. Les espaces communs sont également connectés en WiFi public ou privé.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">⚡</div>
+                        <h3>Performant et sécurisé</h3>
+                        <p>Chaque installation s'appuie sur une connexion fibre optique entreprise à ultra haut débit garanti, secourue par un lien secondaire tiers. Le coût est optimisé grâce à la mutualisation.</p>
+                    </div>
+                    <div class="service-card">
                         <div class="service-icon">🚀</div>
-                        <h3>Déploiement Continu</h3>
-                        <p>Automatisation complète de vos pipelines de déploiement pour une mise en production sans friction. CI/CD optimisé pour une livraison rapide et fiable.</p>
-                    </div>
-                    <div class="service-card fade-in">
-                        <div class="service-icon">☁️</div>
-                        <h3>Infrastructure Cloud</h3>
-                        <p>Conception et gestion d'infrastructures cloud scalables sur AWS, Azure et GCP. Optimisation des coûts et des performances garantie.</p>
-                    </div>
-                    <div class="service-card fade-in">
-                        <div class="service-icon">📊</div>
-                        <h3>Monitoring & Observabilité</h3>
-                        <p>Mise en place de solutions de monitoring avancées pour une visibilité complète sur vos applications et infrastructures en temps réel.</p>
+                        <h3>À l'épreuve du futur</h3>
+                        <p>Solution fibre optique de bout en bout, à la pointe de la technologie, flexible et évolutive. Adaptable au présent grâce à la possibilité de ré-utilisation d'infrastructures existantes.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="about" id="apropos">
+        <section class="gallery" id="gallery">
             <div class="container">
-                <div class="about-content">
-                    <div>
-                        <h2 class="section-title" style="text-align: left;">À propos de LimOps</h2>
-                        <div class="about-text">
-                            <p>La clarté, la cohérence et l'intention sont les fondations de tout travail bien réalisé. Chez LimOps, nous appliquons cette philosophie à chaque projet DevOps.</p>
-                            
-                            <p>Notre équipe d'experts accompagne les entreprises dans leur transformation digitale en proposant des solutions sur mesure qui allient performance, sécurité et évolutivité.</p>
-                            
-                            <p>Nous croyons que l'excellence technique doit s'accompagner d'une approche humaine et collaborative pour créer des solutions durables.</p>
+                <h2 class="section-title">En Images</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="images/gallery-images/1.jpg" alt="LimBox dans GTL"/>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/gallery-images/2.jpg" alt="Baie réseau immeuble"/>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/gallery-images/3.jpg" alt="Installation fibre optique"/>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/gallery-images/4.jpg" alt="Réseau résidentiel"/>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials" id="testimonials">
+            <div class="container">
+                <h2 class="section-title">Témoignages</h2>
+                <div class="services-grid">
+                    <div class="testimonial-card">
+                        <p class="testimonial-content">L'accès Internet est aussi indispensable que l'eau ou l'électricité pour les étudiants logés sur nos campus. LimOps nous permet de répondre efficacement à ce besoin, sans contrainte de gestion supplémentaire.</p>
+                        <div class="testimonial-author">
+                            <div class="author-image">
+                                <img src="images/user-images/1.jpeg" alt="Isabelle"/>
+                            </div>
+                            <div class="author-info">
+                                <h4>Isabelle</h4>
+                                <p>Gestionnaire de résidences universitaires</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="stats">
-                        <div class="stat">
-                            <span class="stat-number">50+</span>
-                            <span>Projets réalisés</span>
+                    <div class="testimonial-card">
+                        <p class="testimonial-content">Nous voulions intégrer un service WiFi haut de gamme dans les charges de copropriété de nos programmes immobiliers neufs. La solution de LimOps apporte une plus-value certaine à nos logements.</p>
+                        <div class="testimonial-author">
+                            <div class="author-image">
+                                <img src="images/user-images/2.jpeg" alt="Aarav"/>
+                            </div>
+                            <div class="author-info">
+                                <h4>Aarav</h4>
+                                <p>Promoteur immobilier</p>
+                            </div>
                         </div>
-                        <div class="stat">
-                            <span class="stat-number">99.9%</span>
-                            <span>Uptime garanti</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number">24/7</span>
-                            <span>Support technique</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number">5 ans</span>
-                            <span>D'expérience</span>
+                    </div>
+                    <div class="testimonial-card">
+                        <p class="testimonial-content">L'accès Internet fait partie des services indispensables de tout espace de coworking. La fiabilité, le débit, mais aussi la sécurité ont été des critères déterminants.</p>
+                        <div class="testimonial-author">
+                            <div class="author-image">
+                                <img src="images/user-images/3.jpeg" alt="Thomas"/>
+                            </div>
+                            <div class="author-info">
+                                <h4>Thomas</h4>
+                                <p>Dirigeant d'espaces de coworking</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -534,55 +568,16 @@
                 <h2 class="section-title" style="color: var(--lime);">Contactez-nous</h2>
                 <div class="contact-content">
                     <div class="contact-form">
-                        <div class="form-group">
-                            <label for="name">Nom complet</label>
-                            <input type="text" id="name" name="name" placeholder="Votre nom" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" placeholder="votre@email.com" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="company">Entreprise</label>
-                            <input type="text" id="company" name="company" placeholder="Nom de votre entreprise">
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="5" placeholder="Décrivez votre projet..." required></textarea>
-                        </div>
-                        <button type="submit" class="submit-btn">Envoyer le message</button>
+                        <div class="calendly-inline-widget" data-url="https://calendly.com/limops/30min?hide_gdpr_banner=1&primary_color=005842" style="min-width:320px;height:700px;"></div>
+                        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
                     </div>
                     <div>
                         <h3>Informations de contact</h3>
-                        <div class="contact-item">
-                            <div class="contact-icon">📧</div>
-                            <div>
-                                <strong>Email</strong><br>
-                                contact@limops.net
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">📱</div>
-                            <div>
-                                <strong>Téléphone</strong><br>
-                                +33 1 23 45 67 89
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">📍</div>
-                            <div>
-                                <strong>Adresse</strong><br>
-                                123 Rue de la Tech<br>
-                                75001 Paris, France
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">🕒</div>
-                            <div>
-                                <strong>Horaires</strong><br>
-                                Lun-Ven: 9h-18h<br>
-                                Support 24/7
-                            </div>
+                        <div style="margin-top: 2rem; color: var(--white);">
+                            <p>SAS au capital de 6000€</p>
+                            <p>944 837 079 R.C.S. Le Havre - APE : 62.02A</p>
+                            <p>2B rue Boris Vian, 76290 Montivilliers</p>
+                            <p>hello [at] limops (point) net</p>
                         </div>
                     </div>
                 </div>
@@ -592,12 +587,16 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 LimOps. Tous droits réservés. | Solutions DevOps & Infrastructure Cloud</p>
+            <p>&copy; <?php echo (date('Y') == '2025') ? '2025' : '2025-'.date('Y'); ?> LimOps - Tous droits réservés</p>
+            <div style="margin-top: 1rem;">
+                <a href="https://x.com/LimOpsFR" target="_blank" style="color: var(--white); margin: 0 1rem;">X</a>
+                <a href="https://www.linkedin.com/company/limops/" target="_blank" style="color: var(--white); margin: 0 1rem;">LinkedIn</a>
+            </div>
         </div>
     </footer>
 
     <script>
-        // Smooth scrolling for navigation links
+        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -621,52 +620,6 @@
                 header.style.background = 'var(--white)';
                 header.style.backdropFilter = 'none';
             }
-        });
-
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.service-card').forEach(card => {
-            observer.observe(card);
-        });
-
-        // Form submission
-        document.querySelector('.contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Simple form validation
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-            
-            if (name && email && message) {
-                alert('Merci pour votre message ! Nous vous recontacterons bientôt.');
-                this.reset();
-            } else {
-                alert('Veuillez remplir tous les champs obligatoires.');
-            }
-        });
-
-        // Add some interactive effects
-        document.querySelectorAll('.tech-icon').forEach(icon => {
-            icon.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-5px) rotate(5deg)';
-            });
-            
-            icon.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) rotate(0deg)';
-            });
         });
     </script>
 </body>
